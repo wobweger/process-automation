@@ -16,6 +16,9 @@ import * as d3 from "d3";
 import { select, Selection} from 'd3-selection';
 import { getPAviewerContent } from './paViewer';
 
+//import {walk} from './utilities/walk';
+import { PrcAutDataProvider } from "./providers/PrcAutDataProvider";
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -102,12 +105,18 @@ export function activate(context: vscode.ExtensionContext) {
 		panel?.dispose();
 	  });
 	
-	  // Add commands to the extension context
-	  context.subscriptions.push(openNote);
-	  context.subscriptions.push(createNote);
-	  context.subscriptions.push(deleteNote);
-		// ----- end: sample notepad
-
+	// Add commands to the extension context
+	context.subscriptions.push(openNote);
+	context.subscriptions.push(createNote);
+	context.subscriptions.push(deleteNote);
+	// ----- end: sample notepad
+	// +++++ beg:PrcAut
+	const rootPath = (vscode.workspace.workspaceFolders && (vscode.workspace.workspaceFolders.length > 0))
+		? vscode.workspace.workspaceFolders[0].uri.fsPath : undefined;
+	const pvrPrcAut=new PrcAutDataProvider(rootPath);
+	vscode.window.registerTreeDataProvider('PrcAut', pvrPrcAut);
+	vscode.commands.registerCommand('PrcAut.refresh', () => pvrPrcAut.refresh());
+	// ----- end:PrcAut
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "process-automation" is now active!');

@@ -27,6 +27,14 @@
         "title": "Notepad: Delete note",
         "icon": "$(trash)"
       },
+			{
+				"command": "PrcAut.refresh",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
       {
         "command": "process-automation.helloWorld",
         "title": "pa.Hello World"
@@ -62,7 +70,13 @@
           "name": "My Notes",
           "type": "tree",
           "visibility": "visible"
-        }
+        },
+				{
+					"id": "PrcAut",
+					"name": "Process Automation",
+					"icon": "media/dep.svg",
+					"contextualTitle": "Process Automation Physical Model"
+				}
       ]
     },
     "viewsWelcome": [
@@ -82,7 +96,12 @@
         {
           "command": "notepad.deleteNote",
           "group": "inline"
-        }
+        },
+				{
+					"command": "PrcAut.refresh",
+					"when": "view == PrcAut",
+					"group": "navigation"
+				}
       ]
     }
   },
