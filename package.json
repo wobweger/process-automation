@@ -10,29 +10,81 @@
     "Other"
   ],
   "activationEvents": [
-		"onView:testView",
+    "onView:testView",
+    "onView:notepad.notesList",
     "onCommand:process-automation.helloWorld"
   ],
   "main": "./out/extension.js",
   "contributes": {
-		"views": {
-			"explorer": [
-				{
-					"id": "testView",
-					"name": "Test View"
-				}
-      ]
-    },
     "commands": [
+      {
+        "command": "notepad.createNote",
+        "title": "Notepad: Create a note",
+        "icon": "$(add)"
+      },
+      {
+        "command": "notepad.deleteNote",
+        "title": "Notepad: Delete note",
+        "icon": "$(trash)"
+      },
       {
         "command": "process-automation.helloWorld",
         "title": "pa.Hello World"
       },
-			{
-				"command": "testView.reveal",
-				"title": "pa.Test View: Reveal"
-			}
-    ]
+      {
+        "command": "process-automation.Viewer",
+        "title": "pa.Viewer"
+      },
+      {
+        "command": "testView.reveal",
+        "title": "pa.Test View: Reveal"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "notepad",
+          "title": "Notepad",
+          "icon": "$(notebook)"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "testView",
+          "name": "Test View"
+        }
+      ],
+      "notepad": [
+        {
+          "id": "notepad.notesList",
+          "name": "My Notes",
+          "type": "tree",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "notepad.notesList",
+        "contents": "No notes yet!\n[Create a note](command:notepad.createNote)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "notepad.createNote",
+          "group": "navigation@1"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "notepad.deleteNote",
+          "group": "inline"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -43,16 +95,27 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.73.0",
+    "@types/d3": "^7.4.0",
     "@types/glob": "^8.0.0",
     "@types/mocha": "^10.0.0",
     "@types/node": "16.x",
+    "@types/uuid": "^8.3.1",
+    "@types/vscode": "^1.73.0",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
+    "@vscode/test-electron": "^2.2.0",
     "eslint": "^8.26.0",
     "glob": "^8.0.3",
     "mocha": "^10.1.0",
     "typescript": "^4.8.4",
-    "@vscode/test-electron": "^2.2.0"
+    "vscode-test": "^1.5.0"
+  },
+  "dependencies": {
+    "@types/d3": "^7.4.0",
+    "@types/d3-selection": "^3.0.3",
+    "d3": "^7.7.0",
+    "d3-selection": "^3.0.0",
+    "@vscode/webview-ui-toolkit": "^1.0.0",
+    "uuid": "^8.3.2"
   }
 }

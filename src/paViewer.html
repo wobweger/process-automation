@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PA Viewer</title>
+        <style type="text/css"><![CDATA[
+
+        ]]>
+        </style>
+    </head>
+    <body>
+        <svg id="paViewer" width="800" height="400" />
+        <script type="text/javascript">
+var cnvViewer=d3.select("#paViewer");
+
+var circle=d3.selectAll("circle")
+        .data([10,5,5])
+        .enter().
+        .append("circle");
+circle.attr("cy",40);
+circle.attr("cx",function(d,i){return (i*50)+20;});
+circle.attr("r",function(d){return d;});
+        </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+#webview-body {
+  display: flex;
+  flex-direction: column;
+}
+
+#notes-form {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 1.5rem;
+}
+
+#submit-button {
+  width: fit-content;
+}
+
+#tags-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  grid-column-gap: 0.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+  #webview-body {
+    padding: 0 8rem;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+}
+
+        /* SVG styles */        
+        svg.validator {
+          float: left;
+          width: 6em;
+          height: 14em;
+          max-width: 25%;
+          max-height: 80vh;
+          overflow: visible;
+          padding: 1em; /* hack for browsers that don't */
+          margin: -1em; /* support overflow on SVG */
+      }
+      .lit {
+          /* Set the lights off to start */
+          display: none;
+      }
+
+circle {
+  stroke : white;
+  stroke-width : 2;
+  color : white;
+  fill : red;
+}
