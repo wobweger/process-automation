@@ -1,7 +1,13 @@
 {
-  "name": "process-automation",
-  "displayName": "process-automation",
-  "description": "process automation based on ISA88 and NE33",
+  "name": "pa-eng-bsr",
+  "displayName": "pa-eng-bsr",
+  "description": "process automation engineering based on ISA88 and NE33",
+  "publisher": "wobweger",
+  "pricing": "Free",
+  "repository": {
+    "type":"git",
+    "url":"https://github.com/wobweger/process-automation"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.73.0"

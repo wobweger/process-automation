@@ -1,6 +1,6 @@
-# process-automation README
+# pa-end-bsr README
 
-This is the README for your extension "process-automation". After writing up a brief description, we recommend including the following sections.
+The "pa-end-bsr" extension is supporting process-automation engineering.
 
 ## Features
 
@@ -29,15 +29,19 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+To many to get even started to mention.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+nothing is working yet.
+please stay tuned and check in a few weeks again.
 
-### 1.0.0
+### 0.0.1
 
-Initial release of ...
+first extension evaluation workflow test run.
+evaluating extension create process only.
+
+nothing is working yet.
 
 ### 1.0.1
 

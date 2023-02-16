@@ -64,7 +64,7 @@ export class PrcAutDataProvider implements vscode.TreeDataProvider<PrcAutTreeIte
      * @param prcAutJson 
      * @returns list of tree items
      */
-    private getTreeItemByPrcAutJson(prcAutJson:{ [k: string]: any }):PrcAutTreeItem[]{
+    private getTreeItemByPrcAutJson(prcAutJson:{ [k: string]: any }|undefined):PrcAutTreeItem[]{
         if (prcAutJson){
 
             let lChild:PrcAutTreeItem[]=[];
@@ -80,9 +80,9 @@ export class PrcAutDataProvider implements vscode.TreeDataProvider<PrcAutTreeIte
                         }
                     }
                     if (iHasChild>0){
-                        lChild.push(new PrcAutTreeItem(sKey, sType,o, vscode.TreeItemCollapsibleState.Collapsed));
+                        lChild.push(new PrcAutTreeItem(sKey, sType,"0.1",o, vscode.TreeItemCollapsibleState.Collapsed));
                     }else{
-                        lChild.push(new PrcAutTreeItem(sKey, sType,o, vscode.TreeItemCollapsibleState.None));
+                        lChild.push(new PrcAutTreeItem(sKey, sType,"0.1",o, vscode.TreeItemCollapsibleState.None));
                     }
                 }
             }
@@ -112,17 +112,18 @@ export class PrcAutTreeItem extends vscode.TreeItem {
 	constructor(
 		public readonly label: string,
 		private readonly type: string,
-		private readonly prcAutJson:{ [k: string]: any },
+		private readonly version: string,
+		private readonly prcAutJson2:{ [k: string]: any },
 		public readonly collapsibleState: vscode.TreeItemCollapsibleState,
 		public readonly command?: vscode.Command
 	) {
 		super(label, collapsibleState);
-        this.prcAutJson=prcAutJson;
+        this.prcAutJson=prcAutJson2;
         this.version='';
 		this.tooltip = `${this.label}-${this.version}`;
 		this.description = this.version;
 	}
-    public getPrcAutJson():{ [k: string]: any } {
+    public getPrcAutJson():{ [k: string]: any } |undefined{
         return this.prcAutJson;
     }
 	iconPath = {
